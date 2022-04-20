@@ -1,5 +1,5 @@
 import styles from './ImageGalleryItem.module.css';
-export const GalleryItem = ({ searchQuery: { hits } }) => {
+export const GalleryItem = ({ searchQuery: { hits }, onClick }) => {
   return hits.map(hit => {
     return (
       <li className={styles.ImageGalleryItem} key={hit.id}>
@@ -7,6 +7,7 @@ export const GalleryItem = ({ searchQuery: { hits } }) => {
           className={styles.ImageGalleryItemImage}
           src={hit.webformatURL}
           alt=""
+          onClick={onClick}
         />
       </li>
     );
