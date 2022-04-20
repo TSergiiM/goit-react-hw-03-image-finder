@@ -1,3 +1,4 @@
+import styles from './Searchbar.module.css';
 export const Searchbar = () => {
   return (
     <header className="searchbar">
