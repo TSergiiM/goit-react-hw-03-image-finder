@@ -6,16 +6,24 @@ import { Component } from 'react';
 export class App extends Component {
   state = {
     searchQuery: '',
+    showModal: false,
   };
+
+  togleModal = () => {
+    this.setState(({ showModal }) => ({ showModal: !showModal }));
+  };
+
   handleSearchSubmit = searchQuery => {
     this.setState({ searchQuery });
   };
+
   render() {
+    const { showModal, searchQuery } = this.state;
     return (
       <div className={styles.App}>
         <Searchbar onSubmit={this.handleSearchSubmit} />
-        <Gallery searchQuery={this.state.searchQuery} />
-        <Modal />
+        <Gallery searchQuery={searchQuery} onClick={this.togleModal} />
+        {showModal && <Modal onClose={this.togleModal}></Modal>}
       </div>
     );
   }
