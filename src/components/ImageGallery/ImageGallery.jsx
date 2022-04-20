@@ -10,6 +10,7 @@ export class Gallery extends Component {
     searchQuery: null,
     error: null,
     status: 'idle',
+    showModal: false,
   };
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.searchQuery !== this.props.searchQuery) {
@@ -20,8 +21,13 @@ export class Gallery extends Component {
     }
   }
 
+  togleModal = () => {
+    this.setState(({ showModal }) => ({ showModal: !showModal }));
+  };
+
   render() {
     const { searchQuery, error, status } = this.state;
+    const { onClick } = this.props;
 
     if (status === 'idle') {
       return <div>Pusto!</div>;
@@ -33,7 +39,7 @@ export class Gallery extends Component {
       return (
         <>
           <ul className={styles.ImageGallery}>
-            <GalleryItem searchQuery={searchQuery} />
+            <GalleryItem searchQuery={searchQuery} onClick={onClick} />
           </ul>
           <Button>Load more</Button>
         </>
