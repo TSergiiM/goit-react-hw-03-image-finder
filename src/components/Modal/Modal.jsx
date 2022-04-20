@@ -1,9 +1,10 @@
+import styles from './Modal.module.css';
 export const Modal = () => {
   return (
-    <div className="overlay">
-      <div className="modal">
-        <img src="" alt="" />
-      </div>
+    // <div className={styles.Overlay}>
+    <div className={styles.Modal}>
+      <img src="" alt="" />
     </div>
+    // </div>
   );
 };
