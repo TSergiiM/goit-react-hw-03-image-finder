@@ -6,7 +6,7 @@ import { searchQueryAPI } from '../../services/api';
 
 export class Gallery extends Component {
   state = {
-    searchQuery: '',
+    searchQuery: null,
     error: null,
     status: 'idle',
     showModal: false,
