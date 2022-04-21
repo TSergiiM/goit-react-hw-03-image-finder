@@ -2,7 +2,6 @@ import { GalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import { Component } from 'react';
 import styles from './ImageGallery.module.css';
 import { Loader } from 'components/Loader/Loader';
-import { Button } from 'components/Button/Button';
 import { searchQueryAPI } from '../../services/api';
 
 export class Gallery extends Component {
@@ -21,10 +20,6 @@ export class Gallery extends Component {
     }
   }
 
-  togleModal = () => {
-    this.setState(({ showModal }) => ({ showModal: !showModal }));
-  };
-
   render() {
     const { searchQuery, error, status } = this.state;
     const { onClick } = this.props;
@@ -37,17 +32,13 @@ export class Gallery extends Component {
     }
     if (status === 'resolved') {
       return (
-        <>
-          <ul className={styles.ImageGallery}>
-            <GalleryItem searchQuery={searchQuery} onClick={onClick} />
-          </ul>
-          <Button>Load more</Button>
-        </>
+        <ul className={styles.ImageGallery}>
+          <GalleryItem searchQuery={searchQuery} onClick={onClick} />
+        </ul>
       );
     }
     if (status === 'rejected') {
       return <h1>{error.message}</h1>;
     }
-    return;
   }
 }
