@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './Searchbar.module.css';
 import { ImSearch } from 'react-icons/im';
 import { Component } from 'react';
@@ -42,3 +43,7 @@ export class Searchbar extends Component {
     );
   }
 }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
